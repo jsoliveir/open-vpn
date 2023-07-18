@@ -51,7 +51,7 @@ FROM node as ssl
 # Install environment
 FROM ssl as environment  
   RUN apt update && apt install -y \
-    openvpn iptables gettext curl openssl jq netcat-openbsd
+    openvpn iptables gettext curl openssl jq 
   WORKDIR /app/vpn
     COPY vpn/server.conf .
     COPY vpn/client.conf .
