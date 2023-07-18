@@ -1,0 +1,22 @@
+services:
+  vpn:
+    privileged: true
+    build: .
+    user: root
+    ports:
+      - 1194:1194/udp
+      - 80:80/tcp
+      - 443:443/tcp
+    environment:
+      - VPN_AUTH_OTP_SECRET=<super-opt-secret>
+      - VPN_AUTH_AZURE_CLIENT_ID=<azure-client-id>
+      - VPN_AUTH_AZURE_TENANT_ID=habitushealth.net
+      - VPN_AUTH_AZURE_CLIENT_SECRET=<secret>
+      - VPN_NETWORK_MASK=255.255.255.0
+      - VPN_GATEWAY_HOST=127.0.0.1
+      - VPN_NETWORK_ADDR=10.0.0.0
+      - VPN_GATEWAY_PORT=1194
+      - VPN_PROFILE_NAME=VPN
+      # - VPN_GATEWAY_SSL_PFX=/app/ssl/server.pfx
+    # volumes:
+    #   - ./certificate.pfx:/app/ssl/server.pfx

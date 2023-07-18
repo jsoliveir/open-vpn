@@ -1,0 +1,57 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-weight: normal;
+  display: grid;
+  padding: 0 2rem;
+  place-items: center;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: rgb(18, 135, 109);
+  transition: 0.4s;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.button {
+  padding: 7px 10px 7px 10px;
+  color: var(--color-background);
+  background-color: var(--color-text);
+  border-radius: 5px;
+}
+
+.button, .button > a {
+  margin-top: 10px;
+}
+
+.button:hover {
+  color: darkgoldenrod;
+  background-color: var(--color-background);
+}
+
+.error {
+  background: #eee;
+  color:darkred;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+header {
+  padding-left: 100px;
+  margin-bottom: 30px;
+}
+
+.qrcode {
+  margin-left:-17px;
+}

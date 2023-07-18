@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "docker compose up --build",
+    "webapp": "cd web && npm start"
+  }
+}
