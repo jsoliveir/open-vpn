@@ -40,6 +40,18 @@ VPN_EXTRA_CLIENT_OPTIONS=
 
 VPN_EXTRA_SERVER_OPTIONS=
 # Extra Options to add to the servers's openvpn profile
+# Use this variable to push routes to the clients or to apply extra configurations
+# Eg:
+#  VPN_EXTRA_SERVER_OPTIONS="management localhost 7505"
+# or:
+# VPN_EXTRA_SERVER_OPTIONS="
+#  push "route 168.63.129.16"
+#  push "route 10.0.0.0 255.0.0.0"
+#  push "dhcp-option DNS 168.63.129.16"
+#  push "dhcp-option WINS 168.63.129.16"
+#  push "dhcp-option domain example.com"
+#  push "dhcp-option domain windows.net"'    
+#  "
 
 VPN_GATEWAY_SSL_PFX=
 # Give it a PFX and it will be exported to PEM files
@@ -72,6 +84,12 @@ VPN_AUTH_OTP_SECRET="<random>"
 
 ```
 
+# Enabling the VPN management console
+
+```bash
+  VPN_EXTRA_SERVER_OPTIONS="management localhost 7505"
+```
+
 # Example of how to spin up the server
 
 Docker
@@ -101,7 +119,7 @@ services:
           push "dhcp-option DNS 168.63.129.16"
           push "dhcp-option WINS 168.63.129.16"
           push "dhcp-option domain example.com"
-          push "dhcp-option domain windows.net"'
+          push "dhcp-option domain windows.net"'      
       - VPN_GATEWAY_SSL_PFX=/app/ssl/server.pfx
     volumes:
       - ./certificate.pfx:/app/ssl/server.pfx
