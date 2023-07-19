@@ -12,8 +12,8 @@ if (!otp)
   process.exit(1)
 
 const hmac = crypto.createHmac('SHA512', hmacSecret)
-const secret = hmac.update(uid).digest('base32').subarray(0,32)
-const encoded =  base32.stringify(secret)
+const secret = hmac.update(uid).digest('base32')
+const encoded =  base32.stringify(secret).substring(0,32)
 
 const validOtp = authenticator.check(otp, encoded)
 if (validOtp) {
