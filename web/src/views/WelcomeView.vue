@@ -53,6 +53,7 @@ profileAPI.then(async (response)=>{
           <SupportIcon />
         </template>
         <template #heading>Install Microsoft Authenticator</template>
+        <p><i style="font-size:80%;">If you prefer any other authenticator app go for it</i></p>
         <ul>
           <li><a target="_blank"
               href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=pt_PT&gl=US">Download for
@@ -60,7 +61,6 @@ profileAPI.then(async (response)=>{
           <li><a target="_blank" href="https://apps.apple.com/us/app/microsoft-authenticator/id983156458">Download for
               iOS</a></li>
         </ul>
-        <p><i style="font-size:80%;">If you prefer any other authenticator app go for it</i></p>
       </WelcomeItem>
       <WelcomeItem v-if="state.otpUri">
         <template #icon>
