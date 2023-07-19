@@ -80,12 +80,12 @@ profileAPI.then(async (response)=>{
           <a target="_blank" :href="state.downloadUrl" > or download profile</a>
         </p>
         <br />
-        <ul>
+        <ol>
           <li><i style="font-size:80%;">Username: your <b>email</b> address</i></li>
           <li><i style="font-size:80%;">Password: your email <b>password</b></i></li>
           <li><i style="font-size:80%;">OTP: when promted get it from the <b>authenticator</b></i></li>
           <li><i style="font-size:80%;">Hint: You can save the password in the app settings</i></li>
-        </ul>
+        </ol>
        
       
       </WelcomeItem>
