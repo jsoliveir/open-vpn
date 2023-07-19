@@ -66,7 +66,7 @@ profileAPI.then(async (response)=>{
         <template #icon>
           <EcosystemIcon />
         </template>
-        <template #heading>Scan the QRCode</template>
+        <template #heading>Scan the QR code</template>
         <p><i style="font-size:80%;color:darkgoldenrod;">If you're on the mobile phone, tap on it</i></p>
         <OtpQrCode size="256" :data="state.otpUri" :key="state.otpUri" />
       </WelcomeItem>
