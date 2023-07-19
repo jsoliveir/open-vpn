@@ -97,7 +97,7 @@ Docker
 services:
   vpn:
     privileged: true
-    build: .
+    image: ghcr.io/jsoliveir/open-vpn-server:v1.0
     user: root
     ports:
       - 1194:1194/udp
