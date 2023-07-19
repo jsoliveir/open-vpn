@@ -55,14 +55,14 @@ app.get('/profile', async (req, res) => {
     return {
       user: upn,
       otpUri: OTP.getURI({ uid: session.upn }),
-      downloadProfileUrl: '/profile/ovpn?c=' + encodeURI(apiToken)
+      downloadProfileUrl: '/profile/ovpn?c=' + encodeURIComponent(apiToken)
     }
   })
 })
 
 app.get('/profile/ovpn', async (req, res) => {
   new RequestHandler(req, res).invoke(async function (log) {
-    const session = JSON.parse(Crypto.decrypt(decodeURI(req.query.c)))
+    const session = JSON.parse(Crypto.decrypt(decodeURIComponent(req.query.c)))
     const user = await AzureAD.getUser(session.user);
     const token = await AzureAD.getServerToken()
     const server = AzureAD.getTokenData(token)
