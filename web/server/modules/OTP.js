@@ -14,13 +14,13 @@ export default class OTP {
     if(!uid) throw "uid cannot be empty"
     const hmac = crypto.createHmac('SHA512', hmacSecret)
     const secret = hmac.update(uid).digest('base32').subarray(0,32)
-    const encoded =  base32.stringify(secret)
+    const encoded = base32.stringify(secret)
     return encoded
   }
 
   static getURI ({uid,digits=6,window=0}){
     const otpSecret = OTP.getSecret(uid)
-    const issuer = `${vpnProfileName} (v${new Date().toJSON().split('T')[0].replace(/[^0-9]/g, "")})`
+    const issuer = encodeURIComponent(`${vpnProfileName} (v${new Date().toJSON().split('T')[0].replace(/[^0-9]/g, "")})`)
     authenticator.options = {window,digits}
     return authenticator.keyuri(uid, issuer, otpSecret)
   }
