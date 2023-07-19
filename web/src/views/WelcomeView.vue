@@ -75,16 +75,18 @@ profileAPI.then(async (response)=>{
           <DocumentationIcon />
         </template>
         <template #heading>Import the OpenVPN profile</template>
-        <ul>
-          <li><i style="font-size:80%;">Use your email and password as credentials</i></li>
-          <li><i style="font-size:80%;">Use One-Time password when prompted</i></li>
-          <li><i style="font-size:80%;">You can save the credentials in the app settings</i></li>
-        </ul>
-        <br />
         <p>
-          <a target="_blank" :href="state.importUrl" class="button" >Click to connect</a>
-          <a target="_blank" :href="state.downloadUrl" > or download the profile</a>
+          <a target="_blank" :href="state.importUrl" class="button" >Click to import</a>
+          <a target="_blank" :href="state.downloadUrl" > or download profile</a>
         </p>
+        <br />
+        <ul>
+          <li><i style="font-size:80%;">Username: your <b>email</b> address</i></li>
+          <li><i style="font-size:80%;">Password: your email <b>password</b></i></li>
+          <li><i style="font-size:80%;">OTP: when promted get it from the <b>authenticator</b></i></li>
+          <li><i style="font-size:80%;">Hint: You can save the password in the app settings</i></li>
+        </ul>
+       
       
       </WelcomeItem>
     </body>

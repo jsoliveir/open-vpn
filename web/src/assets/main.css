@@ -48,6 +48,10 @@ a:hover {
 }
 
 header {
-  padding-left: 100px;
+  padding-left: 55px;
   margin-bottom: 30px;
+}
+
+b {
+  color: darkgoldenrod
 }
