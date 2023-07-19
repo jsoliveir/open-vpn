@@ -13,7 +13,7 @@ export default class OTP {
   static getSecret(uid) {
     if(!uid) throw "uid cannot be empty"
     const hmac = crypto.createHmac('SHA512', hmacSecret)
-    const secret = hmac.update(uid).digest('base32').substring(0,32)
+    const secret = hmac.update(uid).digest('base32').subarray(0,32)
     const encoded =  base32.stringify(secret)
     return encoded
   }
