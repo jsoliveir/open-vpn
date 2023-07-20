@@ -13,10 +13,7 @@ const vpnProfile = (function(){
 export default class OpenVPN {
   static profileName = process.env.VPN_PROFILE_NAME || 'VPN'
   
-  static getProfile(user) {
-    return [
-      vpnProfile,
-      `setenv USERNAME "${user}"`
-    ].join("\n")
+  static getProfile() {
+    return vpnProfile
   }
 }

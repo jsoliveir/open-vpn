@@ -75,7 +75,7 @@ app.get('/profile/ovpn', async (req, res) => {
 
     res.set('Content-Type', 'application/x-openvpn-profile');
     res.set('Content-Disposition', `attachment; filename=profile.ovpn`);
-    return OpenVPN.getProfile(session.user)
+    return OpenVPN.getProfile()
   })
 })
 
