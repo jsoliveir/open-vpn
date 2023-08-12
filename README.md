@@ -72,7 +72,7 @@ VPN_GATEWAY_SSL_PFX=
 
 ```
 
-# Enable Azure AD Password authentication (Resource Owner Password)
+# Azure AD Password authentication (Resource Owner Password)
 
 ```bash
 VPN_AUTH_AZURE_TENANT_ID=
@@ -87,7 +87,7 @@ VPN_AUTH_AZURE_CLIENT_SECRET=
 # Azure App secret
 ```
 
-# Enable One-Time Password Auth
+# One-Time Password Auth
 
 ```bash
 VPN_AUTH_OTP_SECRET="<random>"
