@@ -8,16 +8,12 @@ It is a simple setup built on top of OpenVPN binaries with a couple more feature
 
 What comes with the package:
 
-* Web App with Authentication (OpenID Connect)
-* Authentication via custom scripts
-* mTLS Authentication
+* Web App with authentication (Azure OpenID Connect)
+* VPN Authentication via custom scripts
 * OTP Authentication
 
-When you start the VPN server a web server is also started serving a web page with instructions about how to connect.
-The web app also generates a QRCode that can be scanned by an Authenticator App in order to get OTP generated.
-
-OTP is disabled by default and the QRCode will not appear on the instructions page (web app) unless it's enabled
-_(OTP can be enabled using a configuration variable)_
+When you start the VPN server a web server is also started serving a web page with instructions about how to connect to the VPN server.
+The web app also generates a QR code to be scanned by an Authenticator App if OTP auth is enabled.
 
 ## Configuration variables (with default values):
 
