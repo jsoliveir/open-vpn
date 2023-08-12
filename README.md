@@ -1,6 +1,6 @@
 # OpenVPN Server
 
-A simple OpenVPN server that works.
+A simple OpenVPN server that works with Azure AD.
 
 # How it works
 
