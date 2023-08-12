@@ -1,4 +1,4 @@
-# OpenVPN Server
+# OpenVPN
 
 A simple OpenVPN server that works with Azure AD.
 
