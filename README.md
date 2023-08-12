@@ -72,7 +72,7 @@ VPN_GATEWAY_SSL_PFX=
 
 ```
 
-# Azure AD Password authentication (Resource Owner Password)
+# Azure AD Authentication (Resource Owner Password)
 
 ```bash
 VPN_AUTH_AZURE_TENANT_ID=
