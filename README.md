@@ -13,7 +13,7 @@ What comes with the package:
 * OTP Authentication
 
 When you start the VPN server a web server is also started serving a web page with instructions about how to connect to the VPN server.
-The web app also generates a QR code to be scanned by an Authenticator App if OTP auth is enabled.
+The web app also generates a QR code to be scanned by an Authenticator App.
 
 ## Configuration variables (with default values):
 
