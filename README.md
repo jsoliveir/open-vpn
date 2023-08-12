@@ -1,12 +1,30 @@
 # OpenVPN Server
 
+A simple OpenVPN server that works.
+
+# How it works
+
+It is a simple setup built on top of OpenVPN binaries with a couple more features to make the VPN experience greater.
+
+What comes with the package:
+
+* Web App with Authentication (OpenID Connect)
+* Authentication via custom scripts
+* mTLS Authentication
+* OTP Authentication
+
+When you start the VPN server a web server is also started serving a web page with instructions about how to connect.
+The web app also generates a QRCode that can be scanned by an Authenticator App in order to get OTP generated.
+
+OTP is disabled by default and the QRCode will not appear on the instructions page (web app) unless it's enabled
+_(OTP can be enabled using a configuration variable)_
 
 ## Configuration variables (with default values):
 
 ```bash
 
 VPN_PROFILE_NAME="VPN"
-# The default profile name that should applied when the client imports the .ovpn
+# The default profile name that should be applied when the client imports the .ovpn
 
 VPN_CLIENT_PROFILE=/app/vpn/profile.ovpn
 # Where should the client profile be created
@@ -21,7 +39,7 @@ VPN_GATEWAY_HOST="127.0.0.1"
 # The public address of the gateway (to be used by the clients to connect)
 
 VPN_GATEWAY_PORT="1194"
-# Remote Gateway port (udp)
+# Remote Gateway port (UDP)
 
 VPN_GATEWAY_SSL_CERT="/app/ssl/server.crt"
 # A Certificate for securing the communication
