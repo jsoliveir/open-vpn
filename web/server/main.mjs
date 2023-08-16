@@ -63,7 +63,7 @@ app.get('/profile', async (req, res) => {
 app.get('/profile/ovpn', async (req, res) => {
   new RequestHandler(req, res).invoke(async function (log) {
     const session = JSON.parse(Crypto.decrypt(decodeURIComponent(req.query.c)))
-    const user = await AzureAD.getUser(session.user);
+    const user = await AzureAD.getUser(session.id);
     const token = await AzureAD.getServerToken()
     const server = AzureAD.getTokenData(token)
   
