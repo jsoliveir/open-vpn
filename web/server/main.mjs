@@ -50,11 +50,11 @@ app.get('/profile', async (req, res) => {
 
     const token = AzureAD.parseToken(req.headers)
     const session = AzureAD.getTokenData(token)
-    const { upn, oid, tid } = session
-    const apiToken = Crypto.encrypt(JSON.stringify({ user:upn, id:oid, tenant:tid }))
+    const { upn, email, oid, tid } = session
+    const apiToken = Crypto.encrypt(JSON.stringify({ user:upn || email, id:oid, tenant:tid }))
     return {
       user: upn,
-      otpUri: OTP.getURI({ uid: session.upn }),
+      otpUri: OTP.getURI({ uid: session.upn || session.email }),
       downloadProfileUrl: '/profile/ovpn?c=' + encodeURIComponent(apiToken)
     }
   })
