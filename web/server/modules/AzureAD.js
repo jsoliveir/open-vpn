@@ -76,19 +76,14 @@ export default class AzureAD {
       const userToken = AzureAD.parseToken({ authorization })
       if (!serverToken || !userToken)
         throw 403
-    
-      const request = await fetch('https://graph.microsoft.com/v1.0/me', {
-        headers: { 'Authorization': authorization }
-      })
-      const response = await request.json()
-      if (request.status != 200){
-        console.error(response.error)
-        throw 401
-      }
 
+      const userTokenData = AzureAD.getTokenData(userToken)
+      const user = await AzureAD.getUser(userTokenData.oid)
+      if (!user)
+        throw 403
+     
       const serverData = AzureAD.getTokenData(serverToken)
-      const userData = AzureAD.getTokenData(userToken)
-      if (serverData.tid == userData.tid)
+      if (serverData.tid == userTokenData.tid)
         return userToken
         
     throw 401
