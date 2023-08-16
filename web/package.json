@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "preinstall": "npm install",
+    "preinstall": "cd server && npm install",
     "start": "node server/main.mjs",
     "preview": "vite preview",
     "build": "vite build",
