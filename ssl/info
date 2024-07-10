@@ -1,0 +1,8 @@
+organization = "Oragnization"
+cn = "vpn.organization.net"
+expiration_days = 99999
+cert_signing_key
+crl_signing_key
+signing_key
+serial = 1
+ca

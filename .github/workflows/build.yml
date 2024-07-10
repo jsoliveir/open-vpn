@@ -1,0 +1,35 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - v*
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.ref }}
+
+permissions:
+  packages: write
+  contents: read
+
+jobs:        
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          context: .
+          file: .ci/Dockerfile
+          tags: |
+            ghcr.io/${{ github.actor }}/openvpn:latest
+            ghcr.io/${{ github.actor }}/openvpn:${{github.ref_name}}

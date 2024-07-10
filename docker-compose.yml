@@ -1,0 +1,38 @@
+services:
+  vpn:
+    privileged: true
+    user: root
+    build:
+      dockerfile: .ci/Dockerfile
+      context: .
+    ports:
+      - 1194:1194/udp
+      - 7505:7505/tcp
+    volumes:
+      # openvpn profile
+      - ./data/profile:/app/client
+      # authentication
+      - ./auth:/app/auth
+    environment:
+      # Optional Variables
+      VPN_CLIENT_PROFILE: /app/client/profile.ovpn
+      VPN_CLIENT_SSL_CERT: /app/ssl/client.crt
+      VPN_CLIENT_SSL_KEY: /app/ssl/client.key
+      VPN_SERVER_SSL_CERT: /app/ssl/server.crt
+      VPN_SERVER_SSL_KEY: /app/ssl/server.key
+      VPN_SERVER_SSL_CA: /app/ssl/ca.crt
+      # Not mandatory but useful 
+      VPN_NETWORK_MASK: 255.255.255.0
+      VPN_SERVER_HOST: 127.0.0.1
+      VPN_NETWORK_ADDR: 10.0.0.0
+      VPN_SERVER_PORT: 1194
+      VPN_CLIENT_PROFILE_NAME: VPN
+      VPN_SERVER_OPTIONS: |
+        push "route 168.63.129.16"
+        push "route 10.0.0.0 255.0.0.0"
+        push "dhcp-option DNS 168.63.129.16"
+        push "dhcp-option WINS 168.63.129.16"
+        push "dhcp-option domain example.com"
+        push "dhcp-option domain windows.net"
+  
+
