@@ -17,8 +17,8 @@ Then, invoke it from the main `authentication.sh`
 # SSL Certificates
 
 By default the server will generate self-signed certificates and a root ca.
-You can set the certificates data by editing the `certtificate.info` file.
-Alternatively,  you can bring your own server and client certificates and keys _(for now only one client certificate is supported)_
+You can set the certificates data by editing the `ssl/info` file.
+Alternatively, you can bring your own server and client certificates and keys _(for now only one client certificate is supported)_
 
 ## Configuration variables (with default values):
 
@@ -96,7 +96,9 @@ services:
       - 1194:1194/udp
       - 7505:7505/tcp
     volumes:
+      # generated client profile
       - ./data/profile:/app/client
+      # custom authentication
       - ./auth:/app/auth
     environment:
       # Optional Variables
