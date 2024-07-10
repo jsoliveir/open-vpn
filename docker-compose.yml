@@ -2,9 +2,7 @@ services:
   vpn:
     privileged: true
     user: root
-    build:
-      dockerfile: .ci/Dockerfile
-      context: .
+    image: ghcr.io/jsoliveir/openvpn
     ports:
       - 1194:1194/udp
       - 7505:7505/tcp
