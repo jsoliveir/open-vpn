@@ -1,5 +1,5 @@
-organization = "Oragnization"
-cn = "vpn.organization.net"
+organization = "${VPN_SSL_ORIGANIZATION_NAME}"
+cn = "${VPN_SSL_ORIGANIZATION_NAME}"
 expiration_days = 99999
 cert_signing_key
 crl_signing_key

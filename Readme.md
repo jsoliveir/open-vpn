@@ -24,26 +24,35 @@ Alternatively, you can bring your own server and client certificates and keys _(
 
 ```bash
 
+VPN_AUTH_SCRIPT=/app/auth/microsoft.py
+# authencation handling script 
+
 VPN_PROFILE_NAME="VPN"
 # The default profile name that should be applied when the client imports the .ovpn
 
 VPN_CLIENT_PROFILE=/app/profile.ovpn
 # The default path of the generated client profile (at startup)
 
-VPN_CLIENT_SSL_CERT=/app/ssl/client.crt
+VPN_SSL_CLIENT_CERT=/app/ssl/client.crt
 # The default client certificate
 
-VPN_CLIENT_SSL_KEY=/app/ssl/client.key
+VPN_SSL_CLIENT_KEY=/app/ssl/client.key
 # The default client certificate key
 
-VPN_SERVER_SSL_CERT=/app/ssl/server.crt
+VPN_SSL_SERVER_CERT=/app/ssl/server.crt
 # The default server certificate
 
-VPN_SERVER_SSL_KEY=/app/ssl/server.key
+VPN_SSL_SERVER_KEY=/app/ssl/server.key
 # The default server certificate key
 
-VPN_SERVER_SSL_CA=/app/ssl/ca.crt
+VPN_SSL_SERVER_CA=/app/ssl/ca.crt
 # The default client/server root ca
+
+VPN_SSL_ORGANIZATION_NAME=VPN
+# Organization name for the SSL certificate
+
+VPN_SSL_ORGANIZATION_DOMAIN=vpn.net
+# Organization domain for the SSL certificate
 
 VPN_NETWORK_MASK=255.255.255.0
 # VPN network mask
@@ -103,11 +112,13 @@ services:
     environment:
       # Optional Variables
       VPN_CLIENT_PROFILE: /app/client/profile.ovpn
-      VPN_CLIENT_SSL_CERT: /app/ssl/client.crt
-      VPN_CLIENT_SSL_KEY: /app/ssl/client.key
-      VPN_SERVER_SSL_CERT: /app/ssl/server.crt
-      VPN_SERVER_SSL_KEY: /app/ssl/server.key
-      VPN_SERVER_SSL_CA: /app/ssl/ca.crt
+      VPN_SSL_CLIENT_CERT: /app/ssl/client.crt
+      VPN_SSL_CLIENT_KEY: /app/ssl/client.key
+      VPN_SSL_SERVER_CERT: /app/ssl/server.crt
+      VPN_SSL_SERVER_KEY: /app/ssl/server.key
+      VPN_SSL_SERVER_CA: /app/ssl/ca.crt
+      VPN_SSL_ORGANIZATION_DOMAIN: vpn.net
+      VPN_SSL_ORGANIZATION_NAME: VPN
       # Not mandatory but useful 
       VPN_NETWORK_MASK: 255.255.255.0
       VPN_NETWORK_ADDR: 10.0.0.0

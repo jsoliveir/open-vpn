@@ -1,17 +1,31 @@
 #!/bin/bash
 set -e
 
-export __VPN_CLIENT_SSL_CERT__=$(cat $VPN_CLIENT_SSL_CERT)
-export __VPN_CLIENT_SSL_KEY__=$(cat $VPN_CLIENT_SSL_KEY)
-export __VPN_SERVER_SSL_CA__=$(cat $VPN_SERVER_SSL_CA)
+if [ ! -f  $VPN_SSL_DH_KEY ];
+  then ssl/new-dh-key.sh
+fi
+
+if [ ! -f  $VPN_SSL_SERVER_CA ];
+  then ssl/new-root-ca.sh
+fi
+
+if [ ! -f $VPN_SSL_SERVER_KEY ];
+  then ssl/new-server-cert.sh
+fi
+
+if [ ! -f $VPN_SSL_CLIENT_KEY ];
+  then ssl/new-client-cert.sh
+fi
+
+export __VPN_SSL_CLIENT_CERT__=$(cat $VPN_SSL_CLIENT_CERT)
+export __VPN_SSL_CLIENT_KEY__=$(cat $VPN_SSL_CLIENT_KEY)
+export __VPN_SSL_SERVER_CA__=$(cat $VPN_SSL_SERVER_CA)
+
+chmod +x /app -R
 
 # Generate an OpenVPN server profile
 cat /app/server.conf | envsubst > server.tmp \
   && mv server.tmp /app/server.conf
-
-cat /app/authentication | envsubst > auth.tmp \
-  && mv auth.tmp /app/authentication \
-  && chmod +x /app/authentication 
 
 cat /app/client.conf | envsubst > client.tmp \
   && mv client.tmp $VPN_CLIENT_PROFILE
