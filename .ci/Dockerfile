@@ -12,7 +12,8 @@ FROM ovpn as ssl
     ENV VPN_SSL_CLIENT_KEY=/app/ssl/keys/client.key
     ENV VPN_SSL_SERVER_CERT=/app/ssl/keys/server.crt
     ENV VPN_SSL_SERVER_KEY=/app/ssl/keys/server.key
-    ENV VPN_SSL_SERVER_CA=/app/ssl/keys/ca.crt
+    ENV VPN_SSL_CA_CERT=/app/ssl/keys/ca.crt
+    ENV VPN_SSL_CA_KEY=/app/ssl/keys/ca.key
     ENV VPN_SSL_DH_KEY=/app/ssl/keys/dh.pem
 
 FROM ssl as selenium
