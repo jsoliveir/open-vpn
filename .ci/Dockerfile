@@ -25,14 +25,15 @@ FROM ssl as selenium
   WORKDIR /.local
     RUN chmod 777 .
   ENV DISPLAY=:99
-
+  WORKDIR /app
+  
 FROM selenium as config 
   WORKDIR /app/www
   WORKDIR /app  
   COPY .ci/startup.sh .
   COPY auth/*.* auth/
   COPY profiles/* .
-    ENV VPN_AUTH_SCRIPT=/app/auth/microsoft.pt
+    ENV VPN_AUTH_SCRIPT=/app/auth/microsoft.py
     ENV VPN_CLIENT_PROFILE=/app/profile.ovpn
     ENV VPN_NETWORK_ADDR=172.16.0.0
     ENV VPN_NETWORK_MASK=255.255.255.0
@@ -44,6 +45,4 @@ FROM selenium as config
     ENV VPN_SERVER_OPTIONS=
     ENV VPN_SSL_SERVER_PFX=
     CMD ["/app/startup.sh"]
-  
-  
   

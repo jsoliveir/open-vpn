@@ -2,9 +2,9 @@ name: Build
 on:
   workflow_dispatch:
   push:
-    tags:
+    tags: 
       - v*
-
+    
 concurrency:
   cancel-in-progress: true
   group: ${{ github.ref }}

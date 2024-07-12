@@ -30,7 +30,6 @@ from selenium.webdriver.common.keys \
 from selenium.webdriver.common.by \
     import By
 
-
 # Initialize the WebDriver
 chrome_options = Options()
 chrome_options.add_argument("--headless")
