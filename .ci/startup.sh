@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e && chmod +x /app -R
+chmod +x /app -R; set -e
 
 # Apply proper network rules
 iptables -t nat -A POSTROUTING -j MASQUERADE
