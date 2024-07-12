@@ -44,5 +44,6 @@ FROM selenium as config
     ENV VPN_CLIENT_OPTIONS=
     ENV VPN_SERVER_OPTIONS=
     ENV VPN_SSL_SERVER_PFX=
+    RUN chmod +x /app -R
     CMD ["/app/startup.sh"]
   
