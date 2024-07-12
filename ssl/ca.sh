@@ -13,7 +13,7 @@ if [ ! -f $VPN_SSL_CA_KEY ]; then
 fi
 
 if [ ! -f $VPN_SSL_CA_CERT ]; then
-    echo "Generating CA ceriticate..."
+    echo "Generating CA certificate..."
     # Generate CA certificate
     certtool \
         --load-privkey $VPN_SSL_CA_KEY \

@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -e && chmod +x /app -R
 
 # Apply proper network rules
 iptables -t nat -A POSTROUTING -j MASQUERADE
@@ -23,6 +23,5 @@ cat /app/server.conf | envsubst > server.tmp \
 cat /app/client.conf | envsubst > client.tmp \
   && mv client.tmp $VPN_CLIENT_PROFILE
 
-chmod +x /app/auth -R
 
 openvpn /app/server.conf

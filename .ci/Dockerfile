@@ -28,7 +28,6 @@ FROM ssl as selenium
   WORKDIR /app
   
 FROM selenium as config 
-  WORKDIR /app/www
   WORKDIR /app  
   COPY .ci/startup.sh .
   COPY auth/*.* auth/

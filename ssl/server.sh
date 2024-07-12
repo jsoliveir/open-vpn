@@ -13,7 +13,7 @@ if [ ! -f $VPN_SSL_SERVER_KEY ]; then
 fi
 
 if [ ! -f $VPN_SSL_SERVER_CERT ]; then
-    echo "Generating server ceriticate..."
+    echo "Generating server certificate..."
     # Generate SERVER certificate
     certtool \
         --load-ca-certificate $VPN_SSL_CA_CERT \

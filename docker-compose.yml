@@ -9,18 +9,17 @@ services:
     ports:
       - 1194:1194/udp
       - 7505:7505/tcp
-    volumes:
+    volumes: []
       # persist ssl certificates
-      - ./data/ssl:/app/ssl/keys
+      # - ./data/ssl:/app/ssl/keys
       # openvpn profile
-      - ./data/profile:/app/client
+      # - ./data/profile:/app/client
       # authentication
-      - ./auth:/app/auth
+      # - ./auth:/app/auth
     environment:
       # Optional Variables
-      
       VPN_AUTH_SCRIPT: /app/auth/microsoft.py
-      VPN_CLIENT_PROFILE: /app/client/profile.ovpn
+      # VPN_CLIENT_PROFILE: /app/client/profile.ovpn
       VPN_SSL_CLIENT_CERT: /app/ssl/keys/client.crt
       VPN_SSL_CLIENT_KEY: /app/ssl/keys/client.key
       VPN_SSL_SERVER_CERT: /app/ssl/keys/server.crt
