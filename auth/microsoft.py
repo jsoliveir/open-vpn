@@ -37,8 +37,7 @@ chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 chrome_options.add_argument("--disable-extensions")
 
-service = Service(executable_path=ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service,options=chrome_options)
+driver = webdriver.Chrome(options=chrome_options)
 
 # Open the Microsoft login page
 driver.get(login_url)
